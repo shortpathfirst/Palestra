@@ -1,4 +1,5 @@
 
-public class Maestro {
+public class Maestro extends Membro{
+	
 
 }

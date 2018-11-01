@@ -11,5 +11,5 @@ public class Corso{
 	private List<Atleta> p ;
 	//Orario come ulteriore classe?
 	List<Map<LocalDate, LocalTime>> orario = new ArrayList<Map<LocalDate, LocalTime>>();
-
+	//private Sala s;
 }

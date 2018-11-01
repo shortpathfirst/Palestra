@@ -1,6 +1,6 @@
 
 public interface Scheda {
 	
-	public void aggiungiSchedaAllenamento();
+	//public void aggiungiSchedaAllenamento();
 	
 }
