@@ -1,4 +1,4 @@
 
-public class Abbonato {
-
+public class Abbonato extends Utente{
+	
 }
