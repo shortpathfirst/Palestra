@@ -1,4 +1,4 @@
 
-public class Atleta {
+public class Abbonato {
 
 }
