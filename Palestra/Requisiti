@@ -1,0 +1,30 @@
+Il progetto consiste nella realizzazione di un sistema informativo per la gestione di una palestra.
+La palestra comprende varie attività tra cui corsi svolti da istruttori specializzati e sale per l'esercizio degli allenamenti.
+Il personale della palestra è composta da varie figure:
+- I soci (proprietari della palestra)
+- il personale della segreteria
+- istruttore(privato o non)
+- maestri dei corsi (colui che tiene il corso)
+e può prevedere personale aggiuntivo(xes ditta pulizia ecc..)
+
+Gestione palestra:
+- Gestire piani allenamento
+- Gestire piani alimentazione
+- Gestire iscrizione clienti
+- Gestione abbonamenti e clienti occasionali(abbonamenti suddivisi in offerte differenti in base alla tipologia membri ( studenti,anziani..)
+- Gestione del personale
+- Gestione dei corsi
+- Gestione tesseramento
+- Gestione degli orari
+
+Operazioni:
+- Il proprietario deve poter vedere descrizione di un corso (orario, partecipanti, istruttore)
+- Inserimento, modifica, cancellazione dei corsi
+- Si può creare,modificare,eliminare le schede di allenamento dei suoi atleti
+- Il visitatore può leggere quali attività potrà svolgere in palestra
+- il segretario deve poter aggiungere informazioni atleta
+- l'allenatore può vedere le informazioni di un atleta
+- Notifica per le scadenze di un abbonamento e visualizzazione dettagli(mancato pagamento, mancato certificato medico, tempo rimasto)
+-
+- Statistiche della palestra (totale ingressi in un periodo temporale)
+
