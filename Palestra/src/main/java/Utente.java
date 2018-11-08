@@ -1,4 +1,4 @@
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Utente {
 	
@@ -8,11 +8,11 @@ public class Utente {
 	private String telefono;
 	private String sesso;
 	private String luogoNascita;
-	private Date dataNascita;
+	private LocalDate dataNascita;
 	private String professione;
 	
-	public Utente(String codiceFiscale, String nome, String cognome, String telefono, String sesso, String luogoNascita,
-			Date dataNascita, String professione) {
+	public Utente(String nome, String cognome, String telefono,String codiceFiscale, String sesso, String luogoNascita,
+			LocalDate dataNascita, String professione) {
 		this.codiceFiscale = codiceFiscale;
 		this.nome = nome;
 		this.cognome = cognome;
@@ -58,10 +58,10 @@ public class Utente {
 	public void setLuogoNascita(String luogoNascita) {
 		this.luogoNascita = luogoNascita;
 	}
-	public Date getDataNascita() {
+	public LocalDate getDataNascita() {
 		return dataNascita;
 	}
-	public void setDataNascita(Date dataNascita) {
+	public void setDataNascita(LocalDate dataNascita) {
 		this.dataNascita = dataNascita;
 	}
 	public String getProfessione() {
