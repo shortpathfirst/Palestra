@@ -8,7 +8,7 @@ public class Abbonamento {
 	private double prezzo;
 	private LocalDate inizioAbbonamento;
 	private LocalDate fineAbbonamento;
-	
+	private boolean pagato;
 	
 	public int getIdAbbonamento() {
 		return idAbbonamento;

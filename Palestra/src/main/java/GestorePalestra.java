@@ -41,4 +41,29 @@ public class GestorePalestra {
 	public void assegnaTicket(String codiceFiscale, LocalDate data) {
 		//
 	}
+	public int calcolaNumeroStudentiAnnuale(){
+		return 0;
+	}
+	public int calcolaNumeroStudentiTotale(){
+		return 0;
+	}
+	public List<Lezione> infoCorso(Corso c){
+		c.getId();
+		return null;
+	}
+	public void calcolaGuadagnoCorsoMensileIscritti(Corso c) { // DA CHIEDERE AL PROFF
+		
+	}
+	public void calcolaStudentiAssegnatiMaestro() {}
+	public LocalDate DataScadenzaAbbonamento() {
+	
+	}
+	public void calcolaNumeroPartecipantiCorso() {
+		
+	}
+	
+	public void totaleTicketGiornalieri() {
+		
+	}
+	
 }
