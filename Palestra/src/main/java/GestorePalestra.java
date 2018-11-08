@@ -34,5 +34,11 @@ public class GestorePalestra {
 		
 	}
 	
+	public TipiAbbonamento assegnaAbbonamento(String codiceFiscale, TipiAbbonamento ta) {
+		return ta;
+	}
 	
+	public void assegnaTicket(String codiceFiscale, LocalDate data) {
+		//
+	}
 }
