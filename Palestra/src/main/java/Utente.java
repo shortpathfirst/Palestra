@@ -9,5 +9,6 @@ public class Utente {
 	private String sesso;
 	private String luogoNascita;
 	private Date dataNascita;
+	private String professione;
 	//private String ruoloPalestra;
 }
