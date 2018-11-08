@@ -4,6 +4,7 @@ import java.util.Date;
 public class Abbonamento {
 	
 	private int idAbbonamento;
+	private TipiAbbonamento tipiAbbonamento;
 	private double prezzo;
 	private LocalDate inizioAbbonamento;
 	private LocalDate fineAbbonamento;
@@ -32,5 +33,11 @@ public class Abbonamento {
 	}
 	public void setFineAbbonamento(LocalDate fineAbbonamento) {
 		this.fineAbbonamento = fineAbbonamento;
+	}
+	public TipiAbbonamento getTipiAbbonamento() {
+		return tipiAbbonamento;
+	}
+	public void setTipiAbbonamento(TipiAbbonamento tipiAbbonamento) {
+		this.tipiAbbonamento = tipiAbbonamento;
 	}
 }
