@@ -1,11 +1,12 @@
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Abbonamento {
 	
 	private int idAbbonamento;
 	private double prezzo;
-	private Date inizioAbbonamento;
-	private Date fineAbbonamento;
+	private LocalDate inizioAbbonamento;
+	private LocalDate fineAbbonamento;
 	
 	
 	public int getIdAbbonamento() {
@@ -20,16 +21,16 @@ public class Abbonamento {
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
 	}
-	public Date getInizioAbbonamento() {
+	public LocalDate getInizioAbbonamento() {
 		return inizioAbbonamento;
 	}
-	public void setInizioAbbonamento(Date inizioAbbonamento) {
+	public void setInizioAbbonamento(LocalDate inizioAbbonamento) {
 		this.inizioAbbonamento = inizioAbbonamento;
 	}
-	public Date getFineAbbonamento() {
+	public LocalDate getFineAbbonamento() {
 		return fineAbbonamento;
 	}
-	public void setFineAbbonamento(Date fineAbbonamento) {
+	public void setFineAbbonamento(LocalDate fineAbbonamento) {
 		this.fineAbbonamento = fineAbbonamento;
 	}
 }
