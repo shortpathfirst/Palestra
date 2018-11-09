@@ -8,11 +8,54 @@ import java.util.Map;
 public class Corso{
 	
 	private int idCorso;
-	private String nome; //oppure meglio la tipologia??
-	private String sala;
-	private Maestro m;
-	private List<Utente> p ;
-	//Orario come ulteriore classe?
-	List<Map<LocalDate, LocalTime>> orario = new ArrayList<Map<LocalDate, LocalTime>>();
-	//private Sala s;
+	private String tipoCorso; 		// sostituito nome con tipoCorso
+	private String sala;  			//aggiungere classe Sala?
+	private Maestro maestro;
+	private List<Utente> utenti;
+	private LocalDate data;
+	private LocalTime orario;
+	public int getIdCorso() {
+		return idCorso;
+	}
+	public void setIdCorso(int idCorso) {
+		this.idCorso = idCorso;
+	}
+	public String getTipoCorso() {
+		return tipoCorso;
+	}
+	public void setTipoCorso(String tipoCorso) {
+		this.tipoCorso = tipoCorso;
+	}
+	public String getSala() {
+		return sala;
+	}
+	public void setSala(String sala) {
+		this.sala = sala;
+	}
+	public Maestro getMaestro() {
+		return maestro;
+	}
+	public void setMaestro(Maestro maestro) {
+		this.maestro = maestro;
+	}
+	public List<Utente> getUtenti() {
+		return utenti;
+	}
+	public void setUtenti(List<Utente> utenti) {
+		this.utenti = utenti;
+	}
+	public LocalDate getData() {
+		return data;
+	}
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+	public LocalTime getOrario() {
+		return orario;
+	}
+	public void setOrario(LocalTime orario) {
+		this.orario = orario;
+	}
+	
+
 }

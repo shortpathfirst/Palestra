@@ -1,15 +1,21 @@
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Abbonamento {
 	
-	private int idAbbonamento;
-	private TipiAbbonamento tipiAbbonamento;
+	private int idAbbonamento;			
 	private double prezzo;
-	private LocalDate inizioAbbonamento;
-	private LocalDate fineAbbonamento;
+	private LocalDate dataAbbonamento;
+	private Utente utente;
 	private boolean pagato;
 	
+	public Abbonamento(int idAbbonamento, double prezzo, LocalDate dataAbbonamento, Utente utente, boolean pagato) {
+		super();
+		this.idAbbonamento = idAbbonamento;
+		this.prezzo = prezzo;
+		this.dataAbbonamento = dataAbbonamento;
+		this.utente = utente;
+		this.pagato = pagato;
+	}
 	public int getIdAbbonamento() {
 		return idAbbonamento;
 	}
@@ -22,22 +28,26 @@ public class Abbonamento {
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
 	}
-	public LocalDate getInizioAbbonamento() {
-		return inizioAbbonamento;
+	public LocalDate getDataAbbonamento() {
+		return dataAbbonamento;
 	}
-	public void setInizioAbbonamento(LocalDate inizioAbbonamento) {
-		this.inizioAbbonamento = inizioAbbonamento;
+	public void setDataAbbonamento(LocalDate dataAbbonamento) {
+		this.dataAbbonamento = dataAbbonamento;
 	}
-	public LocalDate getFineAbbonamento() {
-		return fineAbbonamento;
+	public Utente getUtente() {
+		return utente;
 	}
-	public void setFineAbbonamento(LocalDate fineAbbonamento) {
-		this.fineAbbonamento = fineAbbonamento;
+	public void setUtente(Utente utente) {
+		this.utente = utente;
 	}
-	public TipiAbbonamento getTipiAbbonamento() {
-		return tipiAbbonamento;
+	public boolean isPagato() {
+		return pagato;
 	}
-	public void setTipiAbbonamento(TipiAbbonamento tipiAbbonamento) {
-		this.tipiAbbonamento = tipiAbbonamento;
+	public void setPagato(boolean pagato) {
+		this.pagato = pagato;
 	}
+	
+	
+
+	
 }

@@ -6,17 +6,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GestorePalestra {
 	
-	public static void main(String[] args) throws IOException{
-		
-		
-		LocalDate myDate =LocalDate.parse("2014-02-14");
-		String a =  inserisciUtente("Mario", "Rossi", "0792893", "aoshdqeqw213123","m","perugia", myDate,"studente");
-		System.out.println(a);
-		
-	}
+//	List<Corso> corsi = new ArrayList<Corso>();
 	
 	public static String inserisciUtente(String nome, String cognome, String telefono, String codiceFiscale, String sesso, String luogoNascita, LocalDate dataNascita, String professione) throws IOException, FileNotFoundException {
 		
@@ -34,29 +29,40 @@ public class GestorePalestra {
 		
 	}
 	
-	public TipiAbbonamento assegnaAbbonamento(String codiceFiscale, TipiAbbonamento ta) {
-		return ta;
+	public void assegnaAbbonamento(Utente u, Abbonamento a) { //permette di assegnare sia Ticket che abbonamenti
+		a.setUtente(u);
 	}
 	
-	public void assegnaTicket(String codiceFiscale, LocalDate data) {
-		//
-	}
-	public int calcolaNumeroStudentiAnnuale(){
+//	public void assegnaTicket(String codiceFiscale, LocalDate data) {
+//	}
+
+	public int calcolaNumeroUtentiAnnuale(List<Corso> corsi){
+		//TODO come viene deciso l'utente annuale
 		return 0;
 	}
-	public int calcolaNumeroStudentiTotale(){
-		return 0;
+	public int calcolaNumeroUtentiTotale(List<Corso> corsi){
+		int numStudenti = 0;
+		for(Corso c : corsi)
+			for(Utente u : c.getUtenti()) {
+				numStudenti++;
+			}
+		return numStudenti;
 	}
-	public List<Lezione> infoCorso(Corso c){
-		c.getId();
-		return null;
+	public void infoCorso(Corso c){
+		System.out.println("Orario:"+c.getIdCorso());
+		System.out.println("Partecipanti:");
+		for(Utente u : c.getUtenti()) {
+			System.out.println(u.getNome()+" "+u.getCognome());
+		}
 	}
-	public void calcolaGuadagnoCorsoMensileIscritti(Corso c) { // DA CHIEDERE AL PROFF
+	public void calcolaGuadagnoCorsoMensileIscritti(Corso c) {
 		
 	}
-	public void calcolaStudentiAssegnatiMaestro() {}
+	public void calcolaStudentiAssegnatiMaestro() {
+		
+	}
 	public LocalDate DataScadenzaAbbonamento() {
-	
+		return null;
 	}
 	public void calcolaNumeroPartecipantiCorso() {
 		
@@ -65,5 +71,18 @@ public class GestorePalestra {
 	public void totaleTicketGiornalieri() {
 		
 	}
+	
+	public void pagaAbbonamento(Abbonamento a) {
+		a.setPagato(true); //dipendenza da rimuovere con pattern State
+	}
+	
+	
+//Cambiamenti:
+//	Rimosso "Abbonato", è sufficiente aggiungere l'utente a Abbonamento o Ticket tramite la classe "iscriviUtente" (ora GestorePalestra)
+//	Aggiunto "Utente" in abbonamento per associarlo all'utente
+//	Sostituito attributo "fineAbbonamento" in Abbonamento da "durata"
+//	Rimosso TipiAbbonamento, il tipo si definisce estendendo "Abbonamento" in ticket, abbonamentoMensile, ecc.. e ridotti parametri costruttore
+//	data di inizio sia per abbonamento che ticket e solo su abbonamento ho una durata
+//	boolean pagato /non pagato da fare con pattern State nella v0 solo con setPagato
 	
 }
