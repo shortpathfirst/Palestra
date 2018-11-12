@@ -78,7 +78,7 @@ public class GestorePalestra {
 	
 	
 //Cambiamenti:
-//	Rimosso "Abbonato", è sufficiente aggiungere l'utente a Abbonamento o Ticket tramite la classe "iscriviUtente" (ora GestorePalestra)
+
 //	Aggiunto "Utente" in abbonamento per associarlo all'utente
 //	Sostituito attributo "fineAbbonamento" in Abbonamento da "durata"
 //	Rimosso TipiAbbonamento, il tipo si definisce estendendo "Abbonamento" in ticket, abbonamentoMensile, ecc.. e ridotti parametri costruttore
