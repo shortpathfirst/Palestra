@@ -8,55 +8,62 @@ import java.util.Map;
 public class Corso{
 	
 	private int idCorso;
-	private String tipoCorso; 		// sostituito nome con tipoCorso
-	private String sala;  			//aggiungere classe Sala?
+	private String tipoCorso; 		
+	private String sala;  		//da modificare con composite
 	private Maestro maestro;
 	private List<Utente> utenti;
-	private LocalDate data;
-	private LocalTime orario;
-	
+
+	private List<Lezione> lezioni= new ArrayList<>();
+
 	public int getIdCorso() {
 		return idCorso;
 	}
+
 	public void setIdCorso(int idCorso) {
 		this.idCorso = idCorso;
 	}
+
 	public String getTipoCorso() {
 		return tipoCorso;
 	}
+
 	public void setTipoCorso(String tipoCorso) {
 		this.tipoCorso = tipoCorso;
 	}
+
 	public String getSala() {
 		return sala;
 	}
+
 	public void setSala(String sala) {
 		this.sala = sala;
 	}
+
 	public Maestro getMaestro() {
 		return maestro;
 	}
+
 	public void setMaestro(Maestro maestro) {
 		this.maestro = maestro;
 	}
+
 	public List<Utente> getUtenti() {
 		return utenti;
 	}
+
 	public void setUtenti(List<Utente> utenti) {
 		this.utenti = utenti;
 	}
-	public LocalDate getData() {
-		return data;
+
+	public List<Lezione> getLezioni() {
+		return lezioni;
 	}
-	public void setData(LocalDate data) {
-		this.data = data;
+
+	public void setLezioni(List<Lezione> lezioni) {
+		this.lezioni = lezioni;
 	}
-	public LocalTime getOrario() {
-		return orario;
-	}
-	public void setOrario(LocalTime orario) {
-		this.orario = orario;
-	}
+	
+
 	
 
 }
