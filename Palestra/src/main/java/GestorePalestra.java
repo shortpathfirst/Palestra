@@ -30,7 +30,7 @@ public class GestorePalestra {
 	}
 	
 	public void assegnaAbbonamento(Utente u, Abbonamento a) { //permette di assegnare sia Ticket che abbonamenti
-		a.setUtente(u);
+		//a.setUtente(u);
 	}
 	
 //	public void assegnaTicket(String codiceFiscale, LocalDate data) {
@@ -49,7 +49,7 @@ public class GestorePalestra {
 		return numStudenti;
 	}
 	public void infoCorso(Corso c){
-		System.out.println("Orario:"+c.getIdCorso());
+		System.out.println("Orario:"+c.getOrario());
 		System.out.println("Partecipanti:");
 		for(Utente u : c.getUtenti()) {
 			System.out.println(u.getNome()+" "+u.getCognome());

@@ -14,6 +14,7 @@ public class Corso{
 	private List<Utente> utenti;
 	private LocalDate data;
 	private LocalTime orario;
+	
 	public int getIdCorso() {
 		return idCorso;
 	}
