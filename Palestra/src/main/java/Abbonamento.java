@@ -7,6 +7,7 @@ public abstract class Abbonamento {
 	private double prezzo;
 	private LocalDate inizioAbbonamento;
 	private LocalDate fineAbbonamento;
+	private String tipoAbbonamento;
 	private Utente utente;
 	private boolean pagato;
 	
