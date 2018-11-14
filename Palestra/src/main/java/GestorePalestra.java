@@ -49,7 +49,9 @@ public class GestorePalestra {
 		return numStudenti;
 	}
 	public void infoCorso(Corso c){
-		System.out.println("Orario:"+c.getOrario());
+
+		for(Lezione l : c.getLezioni())
+			System.out.println("Orario:"+l.getOrarioInizio());
 		System.out.println("Partecipanti:");
 		for(Utente u : c.getUtenti()) {
 			System.out.println(u.getNome()+" "+u.getCognome());
@@ -75,7 +77,15 @@ public class GestorePalestra {
 	public void pagaAbbonamento(Abbonamento a) {
 		a.setPagato(true); //dipendenza da rimuovere con pattern State
 	}
-	
+	int idCorso;
+	public void aggiungiCorso(Corso c, LocalDate dataInizio, LocalDate dataFine) {
+		
+		c.setIdCorso(idCorso++);
+		
+	}
+	public void assegnaLezioniAlCorso(Corso corso, List<Lezione> lezioni) {
+		
+	}
 	
 //Cambiamenti:
 

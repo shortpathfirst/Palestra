@@ -14,5 +14,8 @@ public class Abbonato extends Utente {
 	public void sottoscriviAbbonamento(Abbonamento a) {
 		this.abbonamenti.add(a);
 	}
+	public void rimuoviAbbonamento(Abbonamento a) {
+		this.abbonamenti.remove(a);
+	}
 
 }
