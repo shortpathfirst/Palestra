@@ -9,7 +9,7 @@ public class Corso{
 	
 	private int idCorso;
 	private String tipoCorso; 		// sostituito nome con tipoCorso
-	private String sala;  			//aggiungere classe Sala?
+	private String sala;  			//aggiungere classe Sala? Sì, quando useremo il composite
 	private Maestro maestro;
 	private List<Utente> utenti;
 	private LocalDate data;
