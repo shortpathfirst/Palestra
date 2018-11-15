@@ -46,7 +46,7 @@ public class ConnessioneDataBase {
 		try{
 			//stabilisco la connessione
 			connect();
-			String inserisciDocente1 = "INSERT INTO ciao ( Nome, Cognome) VALUES ("+"'?', '?')";	
+			String inserisciDocente1 = "INSERT INTO ciao ( Nome, Cognome) VALUES ('mario', 'rossi')";	
 			
 			PreparedStatement pstm = conn.prepareStatement(inserisciDocente1);
 			//set values
