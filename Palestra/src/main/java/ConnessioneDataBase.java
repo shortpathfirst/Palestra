@@ -5,14 +5,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConnessioneDataBase {
-	private static Connection conn;
+	private static Connection conn = null;
+	
+	private static final String DB_DRIVER = "org.postgresql.Driver";
+	private static final String DB_CONNECTION = "jdbc:postgresql:Palestra";
+	private static final String DB_USER = "postgres";
+	private static final String DB_PASSWORD = "postgres";
 	
 	public static boolean connect(){
 		boolean result=false;
 		try {
 			//caricamento driver
-			Class.forName("org.postgresql.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:postgresql:Palestra?user=postgres&password=admin");
+			Class.forName(DB_DRIVER);
+			conn = DriverManager.getConnection(DB_CONNECTION, DB_USER,DB_PASSWORD);
 			result=true;
 			System.out.println("Connection Established!Now you can manage the database!");
 		}catch(ClassNotFoundException cnfe) {
@@ -39,24 +44,30 @@ public class ConnessioneDataBase {
 	}
 	
 	
-	final static String inserisciUtente = "INSERT INTO Utente (Nome,Cognome) VALUES ("+ "?, ?) returning id";
+	//final static String inserisciUtente = "INSERT INTO Utente (Nome,Cognome) VALUES ("+ "?, ?) returning id";
 	
-	public String inserisciUtente(String name,String cognome) {
+	public void inserisciUtente(String nome, String cognome) {
+		
+		
+		PreparedStatement pstm = null;
+		
 		String id = "";
 		try{
 			//stabilisco la connessione
 			connect();
-			String inserisciDocente1 = "INSERT INTO ciao ( Nome, Cognome) VALUES ('mario', 'rossi')";	
+			//String inserisciDocente1 = "INSERT INTO ciao (Nome, Cognome) VALUES (?, ?)";	
+			String inserisciDocente1 = "INSERT INTO ciao" + "(Nome, Cognome) VALUES" + "(?,?)";
 			
-			PreparedStatement pstm = conn.prepareStatement(inserisciDocente1);
+			pstm = conn.prepareStatement(inserisciDocente1);
 			//set values
-			pstm.setString(1, name );
+			pstm.setString(1, nome );
 			pstm.setString(2, cognome);
+			pstm.executeUpdate();
 			//insert
-			ResultSet rst = pstm.executeQuery();
-			if(rst.next()) {
+			//ResultSet rst = pstm.executeQuery();
+			/*if(rst.next()) {
 				id = rst.getString(1);
-			}
+			}*/
 
 			pstm.close();
 
@@ -69,7 +80,7 @@ public class ConnessioneDataBase {
 		}
 		
 		
-		return id;
+		//return id;
 		
 	}
 
