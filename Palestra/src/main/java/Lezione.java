@@ -4,7 +4,7 @@ import java.time.DayOfWeek;
 
 public class Lezione {
 	
-	private int idLezione;
+	private int idLezione; //riferito al corso che l'ha creato
 	private int giornoSettimanale; // numero da 1 a 7
 	private LocalTime orarioInizio;
 	private LocalTime orarioFine;
@@ -16,6 +16,7 @@ public class Lezione {
 		this.orarioInizio = orarioInizio;
 		this.orarioFine = orarioFine;
 	}
+	//quando creo una lezione devo vedere se gli orari sovrappongono ad un altra lezione in tal caso tirare un eccezione
 
 	public int getIdLezione() {
 		return idLezione;
@@ -49,7 +50,7 @@ public class Lezione {
 		this.orarioFine = orarioFine;
 	}
 	
-
+	
 
 
 }

@@ -8,13 +8,25 @@ import java.util.Map;
 public class Corso{
 	
 	private int idCorso;
-	private String tipoCorso; 		// sostituito nome con tipoCorso
+	private String tipoCorso; 		
 	private String sala;  			//aggiungere classe Sala? Sì, quando useremo il composite
-
 	private Maestro maestro;
-	private List<Utente> utenti;
-
+	private List<Abbonato> abbonati;
 	private List<Lezione> lezioni= new ArrayList<>();
+	private double prezzoLezione; //ogni lezione di un corso ha un prezzo fisso
+	
+	
+	public Corso(int idCorso, String tipoCorso, String sala, Maestro maestro, List<Abbonato> abbonati,
+			List<Lezione> lezioni) {
+		super();
+		this.idCorso = idCorso;
+		this.tipoCorso = tipoCorso;
+		this.sala = sala;
+		this.maestro = maestro;
+		this.abbonati = abbonati;
+		this.lezioni = lezioni;
+		this.prezzoLezione = 20; //DEFAULT
+	}
 
 	public int getIdCorso() {
 		return idCorso;
@@ -48,12 +60,12 @@ public class Corso{
 		this.maestro = maestro;
 	}
 
-	public List<Utente> getUtenti() {
-		return utenti;
+	public List<Abbonato> getAbbonati() {
+		return abbonati;
 	}
 
-	public void setUtenti(List<Utente> utenti) {
-		this.utenti = utenti;
+	public void setAbbonati(List<Abbonato> abbonati) {
+		this.abbonati = abbonati;
 	}
 
 	public List<Lezione> getLezioni() {
@@ -64,7 +76,30 @@ public class Corso{
 		this.lezioni = lezioni;
 	}
 	
+	public double getPrezzoLezione() {
+		return this.prezzoLezione;
+	}
+	public void setPrezzoLezione(double value) {
+		this.prezzoLezione = value;
+	}
+	//---------------------------------------------------------------
+	// Operazioni
+	//---------------------------------------------------------------
+	public void ritiraAbbonato(Abbonato a) {
+		this.abbonati.remove(a);
+	}
 
+	public double calcolaGuadagno() {
+		double guadagno = 0;
+		for(Abbonato a : abbonati) {
+			guadagno += this.prezzoLezione;
+		}
+		return guadagno;
+	}
+
+	public int getNumeroStudenti() {
+		return this.abbonati.size();
+	}
 	
 
 }

@@ -8,10 +8,15 @@ import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class GestorePalestra {
-	
-//	List<Corso> corsi = new ArrayList<Corso>();
+	//liste da prelevare database
+	private static List<Corso> listaCorsi = new ArrayList<>();
+	private static List<Istruttore> listaIstruttori = new ArrayList<>();
+	private static List<Esercizio> listaEsercizi = new ArrayList<>();
+	private static List<Abbonato> listaAbbonati = new ArrayList<>();
+	private static List<Ticket> listaTicket = new ArrayList<>();
 	
 	public static String inserisciUtente(String nome, String cognome, String telefono, String codiceFiscale, String sesso, String luogoNascita, LocalDate dataNascita, String professione) throws IOException, FileNotFoundException {
 		
@@ -28,14 +33,46 @@ public class GestorePalestra {
 		return "Utente aggiunto";
 		
 	}
-	
-	public void assegnaAbbonamento(Utente u, Abbonamento a) { //permette di assegnare sia Ticket che abbonamenti
-		//a.setUtente(u);
+
+	public void iscrivi(Utente u){ 
+			
+		    Abbonato iscritto = new Abbonato(u.getNome(),u.getCognome(), u.getTelefono(),u.getCodiceFiscale(),u.getSesso(),u.getLuogoNascita(),u.getDataNascita(),u.getProfessione());
+		    this.listaAbbonati.add(iscritto); 
+		    //TODO Rimuoverlo dalla lista quando l'abbonamento scade
 	}
 	
-//	public void assegnaTicket(String codiceFiscale, LocalDate data) {
-//	}
-
+	public void ritira(Abbonato abbonato) {
+		    // Verifica che l'iscritto sia in elenco
+		    for (Abbonato a : listaAbbonati) 
+		      if (a.getCodiceFiscale() == abbonato.getCodiceFiscale()) 
+		        // Ritira l'iscritto da tutti i corsi di cui fa parte
+		        for (Abbonamento abb : a.getAbbonamenti()) 
+		        	 a.rimuoviAbbonamento(abb);	    
+	}
+	
+	//---------------------------------------------------------------
+	// Assegnazioni
+	//---------------------------------------------------------------
+	public void assegnaAbbonamento(Abbonato abbonato, Abbonamento abbonamento) {
+		abbonato.sottoscriviAbbonamento(abbonamento);
+	}
+	public void assegnaTicket(UtenteOccasionale uo, Ticket t) {
+		uo.acquisisciTicket(t);
+	}
+	public static Istruttore assegnaResponsabileAlimentazione() {
+		// TODO Assegna istruttore a caso
+	    Istruttore is = listaIstruttori.get(new Random().nextInt(listaIstruttori.size()));
+		return is;
+	}
+	public static Istruttore assegnaResponsabileAllenamento() { 
+		// TODO Assegna istruttore a caso
+	    Istruttore is = listaIstruttori.get(new Random().nextInt(listaIstruttori.size()));
+		return is;
+	}
+	
+	//---------------------------------------------------------------
+	// Statistiche
+	//---------------------------------------------------------------
 	public int calcolaNumeroUtentiAnnuale(List<Corso> corsi){
 		//TODO come viene deciso l'utente annuale
 		return 0;
@@ -43,56 +80,61 @@ public class GestorePalestra {
 	public int calcolaNumeroUtentiTotale(List<Corso> corsi){
 		int numStudenti = 0;
 		for(Corso c : corsi)
-			for(Utente u : c.getUtenti()) {
+			for(Abbonato a : c.getAbbonati()) {
 				numStudenti++;
 			}
 		return numStudenti;
 	}
-	public void infoCorso(Corso c){
-
-		for(Lezione l : c.getLezioni())
-			System.out.println("Orario:"+l.getOrarioInizio());
-		System.out.println("Partecipanti:");
-		for(Utente u : c.getUtenti()) {
-			System.out.println(u.getNome()+" "+u.getCognome());
+	public void infoCorso(int idCorso){
+		for(Corso c : listaCorsi) {
+			if(c.getIdCorso() == idCorso) {
+				for(Lezione l : c.getLezioni())
+					System.out.println("Orario:"+l.getOrarioInizio());
+				System.out.println("Partecipanti:");
+				for(Abbonato a : c.getAbbonati()) {
+					System.out.println(a.getNome()+" "+a.getCognome());
+				}
+			}
 		}
 	}
-	public void calcolaGuadagnoCorsoMensileIscritti(Corso c) {
-		
+	
+	public double calcolaGuadagnoMensile(LocalDate mese) {
+		double guadagno = 0;
+		for(Abbonato abbonato : listaAbbonati) { //Per ogni iscritto
+			for(Abbonamento abbonamento : abbonato.getAbbonamenti()) { //Verifica i suoi abbonamenti
+				if(abbonamento.getDataSottoscrizione().getMonth() == mese.getMonth()) { //filtrati per mese
+					guadagno += abbonamento.getPrezzo();
+				}
+			}
+			
+		}
+		return guadagno;
 	}
-	public void calcolaStudentiAssegnatiMaestro() {
-		
+	public double calcolaGuadagnoComplessivo() {
+		double totale = 0;
+		for(Corso c : listaCorsi) {
+			totale += c.calcolaGuadagno();
+		}
+		return totale;
 	}
-	public LocalDate DataScadenzaAbbonamento() {
-		return null;
+	public int calcolaNumeroStudentiAssegnatiMaestro(Maestro m) {
+		int numeroStudenti = 0;
+		for(Corso c : m.getCorsiTenuti()) {
+			numeroStudenti = calcolaNumeroStudentiCorso(c);
+		}
+		return numeroStudenti;
 	}
-	public void calcolaNumeroPartecipantiCorso() {
-		
+	public int calcolaNumeroStudentiCorso(Corso c) {
+		return c.getNumeroStudenti();
 	}
 	
-	public void totaleTicketGiornalieri() {
-		
-	}
 	
+	//---------------------------------------------------------------
+	// Operazioni
+	//---------------------------------------------------------------
 	public void pagaAbbonamento(Abbonamento a) {
-		a.setPagato(true); //dipendenza da rimuovere con pattern State
+		a.setPagato(); //dipendenza da rimuovere con pattern State
 	}
-	int idCorso;
-	public void aggiungiCorso(Corso c, LocalDate dataInizio, LocalDate dataFine) {
-		
-		c.setIdCorso(idCorso++);
-		
-	}
-	public void assegnaLezioniAlCorso(Corso corso, List<Lezione> lezioni) {
-		
-	}
-	
-//Cambiamenti:
 
-//	Aggiunto "Utente" in abbonamento per associarlo all'utente
-//	Sostituito attributo "fineAbbonamento" in Abbonamento da "durata"
-//	Rimosso TipiAbbonamento, il tipo si definisce estendendo "Abbonamento" in ticket, abbonamentoMensile, ecc.. e ridotti parametri costruttore
-//	data di inizio sia per abbonamento che ticket e solo su abbonamento ho una durata
-//	boolean pagato /non pagato da fare con pattern State nella v0 solo con setPagato
-	
+
 }
